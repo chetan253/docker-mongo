@@ -1,0 +1,13 @@
+datastore:
+ image: mongo:latest
+ ports:
+  - "27017:27017"
+app:
+ build: .
+ command: python -u app.py
+ ports:
+  - "8080:8080"
+ volumes:
+  - .:/usr/bin/dockermongo
+ links:
+  - datastore
